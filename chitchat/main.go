@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
+
+	"chitchat/data"
 )
 
 func index(w http.ResponseWriter, r *http.Request) {

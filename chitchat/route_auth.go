@@ -2,6 +2,8 @@ package main
 
 import (
 	"net/http"
+
+	"chitchat/data"
 )
 
 func authenticate(w http.ResponseWriter, r *http.Request) {
@@ -11,9 +13,9 @@ func authenticate(w http.ResponseWriter, r *http.Request) {
 
 	if user.Password == data.Encrypt(r.PostFormValue("password")) {
 		session := user.CreateSession()
-		cookie  := http.Cookie{
-			Name: 		"_cookie",
-			Value: 		session.Uuid,
+		cookie := http.Cookie{
+			Name:     "_cookie",
+			Value:    session.Uuid,
 			HttpOnly: true,
 		}
 		http.SetCookie(w, &cookie)

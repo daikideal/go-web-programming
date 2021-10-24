@@ -3,6 +3,8 @@ package main
 import (
 	"errors"
 	"net/http"
+
+	"chitchat/data"
 )
 
 func session(w http.ResponseWriter, r *http.Request) (sess data.Session, err error) {
