@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Go Web Programming</title>
+  </head>
+  <body>
+    <h1>エラー処理なし</h1>
+      <div>ドットの値は{{ . }}です</div>
+      <div>
+        {{ with "world" }}
+          ドットは今、{{ . }}に設定されています
+        {{ end }}
+      </div>
+      <div>ドットの値は{{ . }}に戻りました</div>
+    <h1>エラー処理付き</h1>
+      <div>ドットの値は{{ . }}です</div>
+      <div>
+        {{ with "" }}
+          ドットは今、{{ . }}に設定されています
+        {{ else }}
+          ドットの値はやはり{{ . }}です
+        {{ end }}
+      </div>
+      <div>ドットの値は{{ . }}に戻りました</div>
+  </body>
+</html>
