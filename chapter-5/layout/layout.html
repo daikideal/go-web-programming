@@ -1,0 +1,28 @@
+{{ define "layout" }}
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Go Web Programming</title>
+  </head>
+  <body>
+    <!-- { template "content" }} -->
+    <!-- 
+      全体のテンプレートが実行されたときにコンテンツテンプレートがない場合、
+      ブロックアクションで定義されたコンテンツテンプレートが代わりに使用される
+    -->
+    {{ block "content" . }}
+      <h1 style="color:blue;">Hello World!</h1>
+    {{ end }}
+  </body>
+</html>
+
+{{ end }}
+
+<!-- 
+{{ define "content" }}
+
+Hello World!
+
+{{ end }} 
+-->
