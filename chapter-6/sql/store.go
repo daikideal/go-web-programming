@@ -6,17 +6,24 @@ import (
 	_ "github.com/lib/pq"
 )
 
+// データベースドライバを直接使用しないために`_`をパッケージ名に設定する。
+// これにより`database/sql`だけをデータベースへのインタフェースにできる
+
 type Post struct {
 	Id      int
 	Content string
 	Author  string
 }
 
+// データベースへのハンドル
 var Db *sql.DB
 
 func init() {
 	var err error
 	// 1. データベースに接続する
+	// 
+	// (正確には「接続に必要になる構造体を設定」しているのみであり、
+	// 接続そのものは必要になった時点ではじめて用意される)
 	Db, err = sql.Open(
 		"postgres",
 		"user=gwp dbname=gwp password=password sslmode=disable",
@@ -26,6 +33,7 @@ func init() {
 	}
 }
 
+// 6. すべての投稿の取得
 func Posts(limit int) (posts []Post, err error) {
 	rows, err := Db.Query(
 		"select id, content, author from posts limit $1",
